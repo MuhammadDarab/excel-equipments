@@ -1,10 +1,58 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  font-family: 'Inter', sans-serif;
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: fit-content;
+  margin: 20px;
+}
+
+.marquee-item {
+  flex: none;
+  min-width: 200px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 3rem;
+}
+
+.marquee-item:hover {
+  opacity: 1;
+}
+
+.marquee-img {
+  height: 300%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #2d2d2d;
+} */
+/* 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -14,7 +62,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #2d2d2d;
     --foreground: #ededed;
   }
 }
@@ -22,5 +70,50 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins;
+} */
+
+
+/* CSS */
+.marquee-container{ overflow:hidden; width:100%; }
+
+.marquee-row{ overflow:hidden; width:100%; margin:12px 0; }
+
+.marquee-track{
+  display:inline-flex;
+  gap:1.5rem;
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+}
+
+/* alternate row direction so rows don't sync */
+.marquee-track.reverse{ animation-direction: reverse; animation-duration:28s; }
+
+.marquee-item{
+  flex: 0 0 220px;   /* fixed item width */
+  height: 120px;     /* fixed item height */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.marquee-img{
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+@keyframes marquee{
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* duplicated content required */
+}
+
+.marquee-track.delayed {
+  animation-delay: -7.5s;
 }
