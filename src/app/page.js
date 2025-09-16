@@ -79,10 +79,16 @@ export default function Home() {
       >
         <div className="text-xl text-white">Excel Equipments</div>
         <ul className="flex space-x-10 text-slate-900/90 font-semibold">
-          {["Home", "About Us", "Contact Us"].map((item) => (
+          {["Home", "Products", "Contact Us"].map((item) => (
             <li
               key={item}
               className="cursor-pointer text-white hover:text-orange-500 transition-colors"
+              onClick={() => {
+                // route to /home
+                if (item === "Home") window.location.href = "/";
+                if (item === "Products") window.location.href = "/products";
+                if (item === "Contact Us") window.location.href = "/#contact";
+              }}
             >
               {item}
             </li>
@@ -147,6 +153,11 @@ export default function Home() {
           camera-controls
           camera-orbit="150deg 75deg 2.5m"
           camera-target="0.3m 0m 0m"
+            environment-image="neutral"
+  shadow-intensity="1"
+  shadow-softness="0.8"
+  shadow-camera="0 0 0"
+  light-position="2m 5m 2m"
           style={{ width: "100%", height: "100%", pointerEvents: "none" }}
         ></model-viewer>
 
