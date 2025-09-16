@@ -69,7 +69,7 @@ return (
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
-      <WhatsAppButton phoneNumber="+923154007818" />
+      <WhatsAppButton phoneNumber="+923094802833" />
       
       {/* Acrylic glass navbar */}
       <motion.nav
