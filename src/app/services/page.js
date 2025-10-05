@@ -114,7 +114,7 @@ export default function ServicesPage() {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-black' : 'bg-gray-50'}`}>
-      <WhatsAppButton phoneNumber="+923154007818" />
+      <WhatsAppButton phoneNumber="+923094802833" />
       
       {/* Modern glassmorphic navbar */}
       <motion.nav
@@ -371,7 +371,7 @@ export default function ServicesPage() {
             </div>
             <div>
               <h4 className="text-lg font-bold mb-4 text-red-500">Contact</h4>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 315 4007818</p>
+              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 309 4802833</p>
             </div>
           </div>
           

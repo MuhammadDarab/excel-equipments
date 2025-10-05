@@ -60,7 +60,7 @@ export default function ContactPage() {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-black' : 'bg-gray-50'}`}>
-      <WhatsAppButton phoneNumber="+923154007818" />
+      <WhatsAppButton phoneNumber="+923094802833" />
       
       {/* Modern glassmorphic navbar */}
       <motion.nav
@@ -196,8 +196,8 @@ export default function ContactPage() {
                   {
                     icon: "📞",
                     title: "Phone",
-                    content: "+92 315 4007818",
-                    link: "tel:+923154007818"
+                    content: "+92 309 4802833",
+                    link: "tel:+923094802833"
                   },
                   {
                     icon: "📧",
@@ -324,7 +324,7 @@ export default function ContactPage() {
                         ? 'bg-slate-700/50 border border-slate-600 text-white placeholder-gray-400'
                         : 'bg-white border border-gray-300 text-gray-900 placeholder-gray-500'
                     }`}
-                    placeholder="+92 300 1234567"
+                    placeholder="+92 309 4802833"
                   />
                 </div>
 
@@ -409,7 +409,7 @@ export default function ContactPage() {
             </div>
             <div>
               <h4 className="text-lg font-bold mb-4 text-red-500">Contact</h4>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 315 4007818</p>
+              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 309 4802833</p>
             </div>
           </div>
           

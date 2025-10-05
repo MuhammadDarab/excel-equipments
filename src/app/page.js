@@ -73,7 +73,7 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-black' : 'bg-gray-50'}`}>
-      <WhatsAppButton phoneNumber="+923465739974" />
+      <WhatsAppButton phoneNumber="+923094802833" />
       
 
       {/* Modern glassmorphic navbar */}
@@ -420,7 +420,7 @@ export default function Home() {
             </div>
             <div>
               <h4 className="text-lg font-bold mb-4 text-red-500">Contact</h4>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 346 5739974</p>
+              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 309 4802833</p>
             </div>
           </div>
           
