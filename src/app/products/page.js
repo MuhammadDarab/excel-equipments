@@ -103,7 +103,10 @@ const ProductsSection = ({ isDark }) => {
 
 export default function ProductsPage() {
   const [invertNavBar, setInvertNavBar] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    try { return localStorage.getItem('isDark') === 'true'; }
+    catch { return false; }
+  });
 
   useEffect(() => {
     const onScroll = () => {
@@ -161,7 +164,10 @@ export default function ProductsPage() {
             transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => setIsDark(!isDark)}
+            onClick={() => {
+              setIsDark(!isDark);
+              localStorage.setItem('isDark', !isDark);
+            }}
             className={`p-2 rounded-full transition-all duration-300 ${
               isDark 
                 ? 'bg-white/10 hover:bg-white/20 text-yellow-400' 
