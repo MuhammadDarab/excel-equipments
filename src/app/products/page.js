@@ -96,14 +96,14 @@ export default function ProductsPage() {
   return (
     <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-black' : 'bg-gray-50'}`}>
       {/* Hero Section with 3D Model */}
-      <section className={`relative w-full h-screen overflow-hidden ${
+      <section className={`relative w-full min-h-screen overflow-hidden ${
         isDark ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-black' : 'bg-gradient-to-br from-gray-100 via-gray-50 to-white'
       }`}>
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-20 left-20 w-96 h-96 bg-red-500/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
         </div>
-        
+
         <model-viewer
           src="gears.glb"
           auto-rotate
@@ -121,15 +121,15 @@ export default function ProductsPage() {
         ></model-viewer>
 
         {/* Text overlay with glassmorphic card */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-center items-start px-12 max-w-2xl">
+        <div className="absolute inset-0 z-10 flex flex-col justify-center items-start px-4 sm:px-6 lg:px-12 py-24 sm:py-0">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className={`backdrop-blur-xl rounded-3xl p-10 shadow-2xl ${
-              isDark 
-                ? 'bg-white/10 border border-white/20' 
+            className={`backdrop-blur-xl rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl max-w-full sm:max-w-xl lg:max-w-2xl ${
+              isDark
+                ? 'bg-white/10 border border-white/20'
                 : 'bg-white/60 border border-gray-300/50'
             }`}
           >
@@ -138,7 +138,7 @@ export default function ProductsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className={`text-5xl font-black mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}
+              className={`text-3xl sm:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}
             >
               All Things Machine Related
             </motion.h2>
@@ -147,7 +147,7 @@ export default function ProductsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.7 }}
-              className={`mb-8 text-lg leading-relaxed ${isDark ? 'text-gray-200' : 'text-gray-800'}`}
+              className={`mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed ${isDark ? 'text-gray-200' : 'text-gray-800'}`}
             >
               We prioritize quality, transparency, and customer satisfaction to
               bring you the best parts available out there for sale.
@@ -162,7 +162,7 @@ export default function ProductsPage() {
               onClick={() => {
                 document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-10 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full font-bold shadow-xl hover:shadow-red-500/50 transition-all duration-300"
+              className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-full font-bold shadow-xl hover:shadow-red-500/50 transition-all duration-300"
             >
               Check Products
             </motion.button>

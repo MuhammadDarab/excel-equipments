@@ -32,6 +32,7 @@ const Navbar = () => {
         try { return localStorage.getItem('isDark') === 'true'; }
         catch { return false; }
     });
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
         <>
@@ -41,7 +42,7 @@ const Navbar = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 80, damping: 12 }}
-                className={`fixed top-4 left-1/2 -translate-x-1/2 max-w-7xl w-full rounded-3xl px-10 py-4 flex justify-between items-center z-50 transition-all duration-500 ${isDark
+                className={`fixed top-4 left-1/2 -translate-x-1/2 max-w-7xl w-[calc(100%-2rem)] md:w-full rounded-3xl px-4 md:px-10 py-4 flex flex-col md:flex-row justify-between items-center z-50 transition-all duration-500 ${isDark
                     ? invertNavBar
                         ? "bg-black/95 backdrop-blur-md shadow-2xl border border-slate-800"
                         : "bg-black/30 backdrop-blur-xl shadow-lg border border-white/10"
@@ -50,9 +51,59 @@ const Navbar = () => {
                         : "bg-white/30 backdrop-blur-xl shadow-lg border border-gray-300/50"
                     }`}
             >
-                <div className={`text-xl font-bold tracking-wide ${isDark ? 'text-white' : 'text-gray-900'}`}>Excel Equipments</div>
+                {/* Mobile Header */}
+                <div className="w-full flex justify-between items-center md:w-auto">
+                    <div className={`text-lg md:text-xl font-bold tracking-wide ${isDark ? 'text-white' : 'text-gray-900'}`}>Excel Equipments</div>
 
-                <div className="flex items-center gap-8">
+                    {/* Mobile Menu Toggle & Theme Toggle */}
+                    <div className="flex items-center gap-3 md:hidden">
+                        {/* Theme Toggle Button - Mobile */}
+                        <motion.button
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                                setIsDark(!isDark);
+                                localStorage.setItem('isDark', !isDark);
+                            }}
+                            className={`p-2 rounded-full transition-all duration-300 ${isDark
+                                ? 'bg-white/10 hover:bg-white/20 text-yellow-400'
+                                : 'bg-gray-800/10 hover:bg-gray-800/20 text-gray-800'
+                                }`}
+                        >
+                            {isDark ? (
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
+                                </svg>
+                            ) : (
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                                </svg>
+                            )}
+                        </motion.button>
+
+                        {/* Hamburger Button */}
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className={`p-2 rounded-lg transition-colors ${isDark ? 'text-white hover:bg-white/10' : 'text-gray-900 hover:bg-gray-900/10'}`}
+                        >
+                            {isMobileMenuOpen ? (
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            ) : (
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            )}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Desktop Menu */}
+                <div className="hidden md:flex items-center gap-8">
                     <ul className="flex space-x-10 font-semibold">
                         {["Home", "Products", "Services", "Contact Us"].map((item) => (
                             <li
@@ -72,7 +123,7 @@ const Navbar = () => {
                         ))}
                     </ul>
 
-                    {/* Theme Toggle Button */}
+                    {/* Theme Toggle Button - Desktop */}
                     <motion.button
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
@@ -99,6 +150,36 @@ const Navbar = () => {
                         )}
                     </motion.button>
                 </div>
+
+                {/* Mobile Menu */}
+                {isMobileMenuOpen && (
+                    <motion.ul
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full mt-4 flex flex-col space-y-3 font-semibold md:hidden"
+                    >
+                        {["Home", "Products", "Services", "Contact Us"].map((item) => (
+                            <li
+                                key={item}
+                                className={`cursor-pointer transition-colors duration-300 py-2 px-4 rounded-lg ${isDark
+                                    ? 'text-white hover:bg-white/10 hover:text-red-500'
+                                    : 'text-gray-900 hover:bg-gray-900/10 hover:text-red-500'
+                                }`}
+                                onClick={() => {
+                                    setIsMobileMenuOpen(false);
+                                    if (item === "Home") window.location.href = "/";
+                                    if (item === "Products") window.location.href = "/products";
+                                    if (item === "Services") window.location.href = "/services";
+                                    if (item === "Contact Us") window.location.href = "/contact";
+                                }}
+                            >
+                                {item}
+                            </li>
+                        ))}
+                    </motion.ul>
+                )}
             </motion.nav>
         </>
     );

@@ -42,21 +42,21 @@ export default function ContactPage() {
     <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-black' : 'bg-gray-50'}`}>
 
       {/* Hero Section */}
-      <section className={`relative w-full min-h-[50vh] flex items-center justify-center pt-32 pb-20 px-8 overflow-hidden ${
+      <section className={`relative w-full min-h-[50vh] flex items-center justify-center pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-8 overflow-hidden ${
         isDark ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-black' : 'bg-gradient-to-br from-gray-100 via-gray-50 to-white'
       }`}>
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-20 w-96 h-96 bg-red-500/30 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl" />
         </div>
-        
-        <div className="max-w-4xl text-center relative z-10">
+
+        <div className="max-w-4xl w-full text-center relative z-10 px-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className={`text-7xl font-black mb-6 ${
-              isDark 
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 ${
+              isDark
                 ? 'bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent'
                 : 'bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent'
             }`}
@@ -67,13 +67,13 @@ export default function ContactPage() {
             initial={{ width: 0 }}
             animate={{ width: "120px" }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="h-1 bg-gradient-to-r from-red-500 to-red-600 mx-auto mt-8 rounded-full"
+            className="h-1 bg-gradient-to-r from-red-500 to-red-600 mx-auto mt-6 sm:mt-8 rounded-full"
           />
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className={`mt-8 text-xl leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
+            className={`mt-6 sm:mt-8 text-base sm:text-lg md:text-xl leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
           >
             Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </motion.p>

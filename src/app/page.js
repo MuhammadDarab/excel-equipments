@@ -55,20 +55,20 @@ export default function Home() {
     <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-black' : 'bg-gray-50'}`}>
 
       {/* Hero Section with videos */}
-      <div className={`relative flex flex-col items-center justify-center min-h-screen px-8 py-20 pt-32 text-center overflow-hidden ${
+      <div className={`relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-8 py-20 pt-24 sm:pt-32 text-center overflow-hidden ${
         isDark ? 'bg-black' : 'bg-white'
       }`}>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 1 }}
-          className="relative z-10"
+          className="relative z-10 w-full"
         >
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-8xl font-black drop-shadow-2xl max-w-4xl text-white"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black drop-shadow-2xl max-w-4xl mx-auto text-white"
           >
             Excel Equipments
           </motion.h1>
@@ -76,36 +76,36 @@ export default function Home() {
             initial={{ width: 0 }}
             animate={{ width: "120px" }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="h-1 bg-gradient-to-r from-red-500 to-red-600 mx-auto mt-8 rounded-full"
+            className="h-1 bg-gradient-to-r from-red-500 to-red-600 mx-auto mt-6 sm:mt-8 rounded-full"
           />
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="mt-8 max-w-2xl text-xl drop-shadow-md text-white"
+            className="mt-6 sm:mt-8 max-w-2xl mx-auto text-base sm:text-lg md:text-xl drop-shadow-md text-white px-4"
           >
             Premium machinery rental solutions tailored for your business —
             flexible, reliable, and transparent.
           </motion.p>
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="relative mt-12 flex gap-6 z-10"
+          className="relative mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 z-10 w-full max-w-md sm:max-w-none px-4"
         >
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(239, 68, 68, 0.4)" }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-white font-bold shadow-2xl transition-all duration-300 hover:from-red-600 hover:to-red-700"
+            className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-white font-bold shadow-2xl transition-all duration-300 hover:from-red-600 hover:to-red-700"
           >
             Get Started
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 rounded-full border-2 border-white/30 backdrop-blur-sm font-bold text-white hover:border-white hover:bg-white/10 transition-all duration-300"
+            className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full border-2 border-white/30 backdrop-blur-sm font-bold text-white hover:border-white hover:bg-white/10 transition-all duration-300"
           >
             Learn More
           </motion.button>
