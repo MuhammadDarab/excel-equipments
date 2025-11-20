@@ -1,6 +1,7 @@
 'use client'
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTheme } from '../../context/ThemeContext';
 
 const WhatsAppButton = ({ phoneNumber }) => {
     const whatsappUrl = `https://wa.me/${phoneNumber}`;
@@ -28,10 +29,7 @@ const WhatsAppButton = ({ phoneNumber }) => {
 
 const Navbar = () => {
     const [invertNavBar, setInvertNavBar] = useState(false);
-    const [isDark, setIsDark] = useState(() => {
-        try { return localStorage.getItem('isDark') === 'true'; }
-        catch { return false; }
-    });
+    const { isDark, toggleTheme } = useTheme();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
@@ -64,10 +62,7 @@ const Navbar = () => {
                             transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
-                            onClick={() => {
-                                setIsDark(!isDark);
-                                localStorage.setItem('isDark', !isDark);
-                            }}
+                            onClick={toggleTheme}
                             className={`p-2 rounded-full transition-all duration-300 ${isDark
                                 ? 'bg-white/10 hover:bg-white/20 text-yellow-400'
                                 : 'bg-gray-800/10 hover:bg-gray-800/20 text-gray-800'
@@ -130,10 +125,7 @@ const Navbar = () => {
                         transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => {
-                            setIsDark(!isDark);
-                            localStorage.setItem('isDark', !isDark);
-                        }}
+                        onClick={toggleTheme}
                         className={`p-2 rounded-full transition-all duration-300 ${isDark
                             ? 'bg-white/10 hover:bg-white/20 text-yellow-400'
                             : 'bg-gray-800/10 hover:bg-gray-800/20 text-gray-800'

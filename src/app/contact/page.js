@@ -1,13 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useTheme } from '../context/ThemeContext';
+import emailjs from '@emailjs/browser';
 
 export default function ContactPage() {
   const [invertNavBar, setInvertNavBar] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
-    try { return localStorage.getItem('isDark') === 'true'; }
-    catch { return false; }
-  });
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,6 +14,7 @@ export default function ContactPage() {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -26,9 +26,37 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you! We will get back to you soon.');
+    setIsSubmitting(true);
+
+    const serviceId = 'service_m24qert';
+    const templateId = 'template_sfevp4l';
+    const publicKey = 'jw-7GzvjmmkCZwPKi';
+
+    emailjs.send(serviceId, templateId, {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+      to_name: 'Excel Equipments',
+    }, publicKey)
+      .then(() => {
+        alert('Thank you! Your message has been sent successfully.');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error);
+        alert('Oops! Something went wrong. Please try again or contact us directly.');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const handleChange = (e) => {
@@ -110,14 +138,14 @@ export default function ContactPage() {
                   {
                     icon: "📞",
                     title: "Phone",
-                    content: "+92 309 4802833",
+                    content: "+92 309 4802833 / +92 321 4043932",
                     link: "tel:+923094802833"
                   },
                   {
                     icon: "📧",
                     title: "Email",
-                    content: "info@excelequipments.com",
-                    link: "mailto:info@excelequipments.com"
+                    content: "equipmentsexcel@gmail.com",
+                    link: "mailto:equipmentsexcel@gmail.com"
                   },
                   {
                     icon: "📍",
@@ -282,11 +310,14 @@ export default function ContactPage() {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl font-bold shadow-xl hover:shadow-red-500/50 transition-all duration-300"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className={`w-full px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl font-bold shadow-xl hover:shadow-red-500/50 transition-all duration-300 ${
+                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                  }`}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </form>
             </motion.div>
@@ -324,6 +355,8 @@ export default function ContactPage() {
             <div>
               <h4 className="text-lg font-bold mb-4 text-red-500">Contact</h4>
               <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 309 4802833</p>
+              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 321 4043932</p>
+              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>equipmentsexcel@gmail.com</p>
             </div>
           </div>
           

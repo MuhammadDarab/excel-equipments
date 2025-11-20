@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useTheme } from '../context/ThemeContext';
 
 const ProductsSection = ({ isDark }) => {
   const productsList = [
@@ -80,10 +81,7 @@ const ProductsSection = ({ isDark }) => {
 
 export default function ProductsPage() {
   const [invertNavBar, setInvertNavBar] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
-    try { return localStorage.getItem('isDark') === 'true'; }
-    catch { return false; }
-  });
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const onScroll = () => {
@@ -204,6 +202,8 @@ export default function ProductsPage() {
             <div>
               <h4 className="text-lg font-bold mb-4 text-red-500">Contact</h4>
               <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 309 4802833</p>
+              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 321 4043932</p>
+              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>equipmentsexcel@gmail.com</p>
             </div>
           </div>
           
