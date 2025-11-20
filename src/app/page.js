@@ -332,9 +332,9 @@ export default function Home() {
             </div>
             <div>
               <h4 className="text-lg font-bold mb-4 text-red-500">Contact</h4>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 309 4802833</p>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 321 4043932</p>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>equipmentsexcel@gmail.com</p>
+              <a href="https://wa.me/923094802833" target="_blank" rel="noopener noreferrer" className={`block hover:text-red-500 transition-colors ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>+92 309 4802833</a>
+              <a href="https://wa.me/923214043932" target="_blank" rel="noopener noreferrer" className={`block hover:text-red-500 transition-colors ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>+92 321 4043932</a>
+              <a href="mailto:equipmentsexcel@gmail.com" className={`block hover:text-red-500 transition-colors ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>equipmentsexcel@gmail.com</a>
             </div>
           </div>
           

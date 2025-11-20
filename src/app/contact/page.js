@@ -28,7 +28,7 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const serviceId = 'service_m24qert';
+    const serviceId = 'service_azihnao';
     const templateId = 'template_sfevp4l';
     const publicKey = 'jw-7GzvjmmkCZwPKi';
 
@@ -138,8 +138,8 @@ export default function ContactPage() {
                   {
                     icon: "📞",
                     title: "Phone",
-                    content: "+92 309 4802833 / +92 321 4043932",
-                    link: "tel:+923094802833"
+                    content: ["+92 309 4802833", "+92 321 4043932"],
+                    links: ["https://wa.me/923094802833", "https://wa.me/923214043932"]
                   },
                   {
                     icon: "📧",
@@ -178,8 +178,22 @@ export default function ContactPage() {
                         <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                           {item.title}
                         </h3>
-                        {item.link ? (
-                          <a 
+                        {item.links ? (
+                          <div className="space-y-1">
+                            {item.content.map((num, idx) => (
+                              <a
+                                key={idx}
+                                href={item.links[idx]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`block text-lg hover:text-red-500 transition-colors ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
+                              >
+                                {num}
+                              </a>
+                            ))}
+                          </div>
+                        ) : item.link ? (
+                          <a
                             href={item.link}
                             className={`text-lg hover:text-red-500 transition-colors ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
                           >
@@ -354,9 +368,9 @@ export default function ContactPage() {
             </div>
             <div>
               <h4 className="text-lg font-bold mb-4 text-red-500">Contact</h4>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 309 4802833</p>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>+92 321 4043932</p>
-              <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>equipmentsexcel@gmail.com</p>
+              <a href="https://wa.me/923094802833" target="_blank" rel="noopener noreferrer" className={`block hover:text-red-500 transition-colors ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>+92 309 4802833</a>
+              <a href="https://wa.me/923214043932" target="_blank" rel="noopener noreferrer" className={`block hover:text-red-500 transition-colors ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>+92 321 4043932</a>
+              <a href="mailto:equipmentsexcel@gmail.com" className={`block hover:text-red-500 transition-colors ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>equipmentsexcel@gmail.com</a>
             </div>
           </div>
           
